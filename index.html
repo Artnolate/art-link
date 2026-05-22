@@ -1,31 +1,92 @@
 <!DOCTYPE html>
-<html lang="th">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ARTNOLATE — Official Course Catalog</title>
+  <base target="_top">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* ตั้งค่าให้หน้าเว็บแผ่เต็มจอโทรศัพท์พอดี */
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: #ffffff;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
+    body { font-family: 'Kanit', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+    .container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    h2 { color: #2c3e50; text-align: center; margin-bottom: 5px; }
+    .current-date { text-align: center; color: #e67e22; font-weight: 500; margin-bottom: 20px; }
+    .search-box { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+    .student-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #eee; }
+    .student-name { font-weight: 500; font-size: 16px; color: #34495e; }
+    .student-detail { font-size: 12px; color: #7f8c8d; }
+    .btn-check { background-color: #27ae60; color: white; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-family: 'Kanit', sans-serif; }
+    .btn-check:disabled { background-color: #bdc3c7; }
   </style>
 </head>
 <body>
 
-  <!-- ⚠️ ตรง src ด้านล่างนี้ ให้ลบลิงก์จำลองออก แล้วเอาลิงก์ /exec จริงของคุณมาวางแทนครับ -->
-  <iframe src="https://script.google.com/macros/s/AKfycbxkVk0oktQuE0VrTm2Pn4bW1lLoHN78nreQtt7Su8e1oniNo6rY_q4VF-S9gUEri55sJQ/exec"></iframe>
+<div class="container">
+  <h2>Artnolate Check-in</h2>
+  <div id="displayDate" class="current-date"></div>
+  <input type="text" id="searchInput" class="search-box" placeholder="🔍 พิมพ์ชื่อเล่น หรือ โรงเรียน..." onkeyup="filterStudents()">
+  <div id="studentList"></div>
+</div>
 
+<script>
+  let allStudents = [];
+
+  window.onload = function() {
+    const now = new Date();
+    document.getElementById('displayDate').innerHTML = "📅 " + now.toLocaleDateString('th-TH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    
+    google.script.run.withSuccessHandler(function(data) {
+      allStudents = data;
+      renderList(data);
+    }).getActiveStudents();
+  };
+
+  function renderList(students) {
+    const listDiv = document.getElementById('studentList');
+    listDiv.innerHTML = '';
+    students.forEach((st, index) => {
+      const item = document.createElement('div');
+      item.className = 'student-item';
+      item.innerHTML = `
+        <div>
+          <div class="student-name">${st.nickName}</div>
+          <div class="student-detail">โรงเรียน:${st.school}</div>
+          <div class="student-detail">ภาค: ${st.department} | เบอร์: ${st.phone}</div>
+        </div>
+        <button class="btn-check" id="btn-${index}" onclick="checkIn('${st.nickName}', '${st.school}', '${st.phone}', '${st.department}', ${index})">เช็คชื่อ</button>
+      `;
+      listDiv.appendChild(item);
+    });
+  }
+
+  function filterStudents() {
+    const term = document.getElementById('searchInput').value.toLowerCase();
+    const filtered = allStudents.filter(st => 
+      st.nickName.toLowerCase().includes(term) || st.school.toLowerCase().includes(term)
+    );
+    renderList(filtered);
+  }
+
+  function checkIn(nick, sch, ph, dept, idx) {
+    const btn = document.getElementById('btn-' + idx);
+    btn.disabled = true;
+    btn.innerHTML = '⌛';
+    
+    google.script.run
+      .withSuccessHandler(function(res) {
+        if(res === "Success") {
+          btn.innerHTML = '✅ สำเร็จ';
+          btn.style.backgroundColor = "#bdc3c7";
+        } else {
+          alert("Error: " + res);
+          btn.disabled = false;
+          btn.innerHTML = 'เช็คชื่อ';
+        }
+      })
+      .withFailureHandler(function(err) {
+        alert("ระบบขัดข้อง: " + err.message);
+        btn.disabled = false;
+        btn.innerHTML = 'เช็คชื่อ';
+      })
+      .recordAttendance(nick, sch, ph, dept);
+  }
+</script>
 </body>
 </html>
