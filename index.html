@@ -207,6 +207,125 @@ body::before{
 .why-item h3{font-family:'Noto Sans Thai',serif;font-size:1.1rem;font-weight:600;margin-bottom:.5rem;color:var(--gold3)}
 .why-item p{font-size:.85rem;color:var(--mist);line-height:1.7;font-family:'Noto Sans Thai',sans-serif}
 
+/* ─── DEPARTMENT GALLERY ─── */
+.dept-section{padding:6rem 3.5rem;background:var(--ink);position:relative;z-index:1}
+.dept-inner{max-width:1200px;margin:0 auto}
+.dept-intro{font-size:.88rem;color:var(--dust);margin-bottom:3rem;max-width:640px;line-height:1.7;font-family:'Noto Sans Thai',sans-serif}
+.dept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.dept-card{
+  position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;
+  background:var(--charcoal);border:1px solid rgba(255,255,255,.06);
+  -webkit-tap-highlight-color:transparent;
+}
+.dept-card img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:top center;transition:transform .5s ease,opacity .3s ease;
+  opacity:.55;
+}
+.dept-card:hover img{transform:scale(1.06);opacity:.75}
+.dept-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(11,11,11,.15) 0%,rgba(11,11,11,.55) 55%,rgba(11,11,11,.94) 100%);
+}
+.dept-card-body{position:absolute;left:0;right:0;bottom:0;padding:1.3rem 1.2rem;z-index:2}
+.dept-num{font-family:'Noto Sans Thai',serif;font-size:.72rem;color:var(--gold2);letter-spacing:2px;margin-bottom:.4rem;display:block}
+.dept-name{font-family:'Noto Sans Thai',serif;font-size:1.15rem;font-weight:600;line-height:1.25;margin-bottom:.5rem;color:var(--paper)}
+.dept-meta{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.dept-count{font-size:.68rem;letter-spacing:1px;color:var(--mist);font-family:'Noto Sans Thai',sans-serif}
+.dept-arrow{
+  width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;color:var(--paper);
+  font-size:.85rem;flex-shrink:0;transition:all .25s;
+}
+.dept-card:hover .dept-arrow{background:var(--gold);border-color:var(--gold);color:var(--ink);transform:rotate(45deg)}
+.dept-card.dept-soon{cursor:default}
+.dept-card.dept-soon img{filter:grayscale(1);opacity:.18}
+.dept-card.dept-soon:hover img{transform:none;opacity:.18}
+.dept-card.dept-soon .dept-name{color:var(--dust)}
+.dept-card.dept-soon .dept-arrow{opacity:.3}
+.dept-soon-badge{
+  position:absolute;top:1rem;right:1rem;z-index:2;
+  font-size:.58rem;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 10px;border:1px solid rgba(255,255,255,.18);color:var(--dust);
+  background:rgba(11,11,11,.6);
+}
+
+/* ─── DEPT LIGHTBOX ─── */
+.dept-lightbox{
+  position:fixed;inset:0;z-index:1000;background:rgba(6,6,6,.97);
+  display:none;flex-direction:column;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.dept-lightbox.open{display:flex}
+.dlb-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.5rem;padding-top:calc(1rem + var(--safe-top));
+  flex-shrink:0;
+}
+.dlb-title{font-family:'Noto Sans Thai',serif;font-size:1rem;color:var(--paper);letter-spacing:1px}
+.dlb-title span{color:var(--gold2);font-size:.75rem;letter-spacing:2px;margin-left:.6rem}
+.dlb-close{
+  width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
+  background:transparent;color:var(--paper);font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;
+}
+.dlb-close:hover{border-color:var(--gold);color:var(--gold)}
+.dlb-stage{
+  flex:1;position:relative;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:0 1rem;min-height:0;
+}
+.dlb-img-wrap{
+  position:relative;max-width:100%;max-height:100%;height:100%;width:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+.dlb-img-wrap img{
+  max-width:100%;max-height:100%;object-fit:contain;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.dlb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(11,11,11,.55);border:1px solid rgba(255,255,255,.15);
+  color:var(--paper);font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;z-index:3;-webkit-tap-highlight-color:transparent;
+}
+.dlb-nav:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.dlb-prev{left:1rem}
+.dlb-next{right:1rem}
+.dlb-bottom{
+  display:flex;align-items:center;justify-content:center;gap:1rem;
+  padding:1rem 1.5rem;padding-bottom:calc(1rem + var(--safe-bottom));flex-shrink:0;
+}
+.dlb-counter{font-size:.75rem;color:var(--dust);letter-spacing:1px;font-family:'Noto Sans Thai',sans-serif;min-width:60px;text-align:center}
+.dlb-dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:70%}
+.dlb-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .2s;flex-shrink:0}
+.dlb-dot.active{background:var(--gold);width:16px;border-radius:3px}
+
+@media(max-width:1024px) and (min-width:768px){
+  .dept-section{padding-left:2rem;padding-right:2rem}
+  .dept-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+@media(max-width:767px){
+  .dept-section{padding-top:3.5rem;padding-bottom:3.5rem;padding-left:1.2rem;padding-right:1.2rem}
+  .dept-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
+  .dept-card-body{padding:1rem .9rem}
+  .dept-name{font-size:.92rem}
+  .dept-num{font-size:.62rem}
+  .dept-count{font-size:.6rem}
+  .dept-arrow{width:24px;height:24px;font-size:.7rem}
+  .dlb-nav{width:38px;height:38px}
+  .dlb-prev{left:.4rem}
+  .dlb-next{right:.4rem}
+  .dlb-title{font-size:.85rem}
+  .dlb-title span{display:block;margin-left:0;margin-top:.15rem}
+}
+
+@media(max-width:400px){
+  .dept-grid{grid-template-columns:1fr 1fr}
+}
+
 /* ─── COURSES ─── */
 .courses-section{padding:6rem 3.5rem;position:relative;z-index:1}
 .courses-inner{max-width:1200px;margin:0 auto}
@@ -542,6 +661,205 @@ footer p{font-size:.75rem;color:var(--dust);letter-spacing:.5px;font-family:'Not
     </div>
   </div>
 </section>
+
+<!-- DEPARTMENT GALLERY -->
+<section class="dept-section" id="departments">
+  <div class="dept-inner">
+    <div class="section-eyebrow">Portfolio Guide</div>
+    <h2 class="section-title">แผนการเรียนแต่ละภาควิชา</h2>
+    <div class="section-rule"></div>
+    <p class="dept-intro">แตะที่แต่ละภาควิชาเพื่อดูคู่มือแนะแนว หัวข้อการเรียนรู้ มหาวิทยาลัยที่เปิดรับ และตัวอย่างผลงาน — ครบทุกสายศิลปกรรมและสถาปัตยกรรม</p>
+
+    <div class="dept-grid" id="deptGrid">
+      
+      <!-- [แก้ไขจุดนี้] เพิ่มรูปภาพทั้งหมดของสถาปัตยกรรมเข้าไปใน data-images -->
+      <div class="dept-card" data-dept="arch" data-count="10" data-images='[
+        "https://github.com/user-attachments/assets/259a8e57-2f15-4003-8356-b449b5d97640",
+        "https://github.com/user-attachments/assets/7dabd30c-84fd-481f-8f0e-d7754440e334",
+        "https://github.com/user-attachments/assets/1cc9755e-2bfb-4f41-b320-c054ed818c1f",
+        "https://github.com/user-attachments/assets/9ad9ee35-cd86-4a9f-a2b4-1db9cdcdc7c9",
+        "https://github.com/user-attachments/assets/80efc1c7-72e3-446b-acb2-c73d22666859",
+        "https://github.com/user-attachments/assets/e8966691-55c6-44ef-a134-2771a6acb477",
+        "https://github.com/user-attachments/assets/acdc6261-5f12-4106-93b9-186d6a6e4b1e",
+        "https://github.com/user-attachments/assets/6be59fff-082d-4a8e-b36c-a01bca682242",
+        "https://github.com/user-attachments/assets/b95d8c84-4886-4f6c-bc61-20f91b0e0bcb",
+        "https://github.com/user-attachments/assets/f48f4d56-c0f6-468c-8c16-c3c3983011f2"
+      ]'>
+        <!-- ดึงรูปแรกสุดบน GitHub มาแสดงผลเป็นรูปหน้าปกหน้าเว็บ -->
+        <img src="https://github.com/user-attachments/assets/259a8e57-2f15-4003-8356-b449b5d97640" alt="สถาปัตยกรรม" loading="lazy"/>
+        <div class="dept-card-body">
+          <span class="dept-num">01</span>
+          <div class="dept-name">สถาปัตยกรรม</div>
+          <div class="dept-meta">
+            <span class="dept-count">10 หน้า · คู่มือแนะแนว</span>
+            <div class="dept-arrow">+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-card" data-dept="interior" data-count="12" data-images='[
+        "https://github.com/user-attachments/assets/87e89d00-bd74-47fe-ac6b-9ca34b0a33f2",
+        "https://github.com/user-attachments/assets/91333552-3cab-4595-aa03-9e8b323bab93",
+        "https://github.com/user-attachments/assets/014e9ae8-5166-449c-b8b4-c9359316eff6",
+        "https://github.com/user-attachments/assets/e9c1d98e-cdf6-44f9-a625-bab491746546",
+        "https://github.com/user-attachments/assets/44244b39-95e7-4cec-ab9e-d35c103972a0",
+        "https://github.com/user-attachments/assets/bcfb7d39-9037-4f39-8bab-322fe875023e",
+        "https://github.com/user-attachments/assets/15f41f3c-8d6f-4476-9b8c-8ba90b1faff9",
+        "https://github.com/user-attachments/assets/e6364b0b-b102-4ee9-99d9-78fcb62bf09a",
+        "https://github.com/user-attachments/assets/7c28de72-b2ac-4792-af4d-495ea1cb97a3",
+        "https://github.com/user-attachments/assets/da32304d-e666-4fcc-b4b3-e0d3b5dac4a4",
+        "https://github.com/user-attachments/assets/f2a02309-bdd3-457e-993b-4d7ee08232c7",
+        "https://github.com/user-attachments/assets/d491ef62-2439-4a4b-a2e9-d9096a31387f"
+      ]'>
+        <img src="https://github.com/user-attachments/assets/87e89d00-bd74-47fe-ac6b-9ca34b0a33f2" alt="ออกแบบภายใน" loading="lazy"/>
+        <div class="dept-card-body">
+          <span class="dept-num">02</span>
+          <div class="dept-name">ออกแบบภายใน</div>
+          <div class="dept-meta">
+            <span class="dept-count">12 หน้า · คู่มือแนะแนว</span>
+            <div class="dept-arrow">+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-card" data-dept="comm" data-count="15" data-images='[
+        "https://github.com/user-attachments/assets/f256392c-a319-44bd-88af-edaae83064e3",
+        "https://github.com/user-attachments/assets/a8280324-f4fe-4f54-ba62-a7be4f337dab",       
+        "https://github.com/user-attachments/assets/14f8bb75-4bf2-499f-af89-8d0a9d1d468f",       
+        "https://github.com/user-attachments/assets/d2523ce3-ad50-4702-a0d9-eecbe42ac8c5",      
+        "https://github.com/user-attachments/assets/7ae77701-2c62-4d89-9399-60f87f9fb58c",      
+        "https://github.com/user-attachments/assets/e7ac8e7b-eeee-458d-8db8-8370931b2828",
+        "https://github.com/user-attachments/assets/3dc0479f-6101-4a1d-a7e3-1767066a94e0",	
+        "https://github.com/user-attachments/assets/6c14f36b-e1e1-4c48-8d6f-c55c3ba1b47c",	
+        "https://github.com/user-attachments/assets/9f3a12be-2de6-4288-a26e-f9b81ca951f7",	
+        "https://github.com/user-attachments/assets/77afeaee-a95e-423f-b4de-65ad236399ec",
+        "https://github.com/user-attachments/assets/17dd7345-6c54-4c00-a379-680f0adb2fd8",
+        "https://github.com/user-attachments/assets/99ca79c9-010e-4b07-8db7-8284b3efbe0d",
+        "https://github.com/user-attachments/assets/94449cfb-e161-405f-9626-c7604c0a202b",
+        "https://github.com/user-attachments/assets/e8c21d0a-59fb-4927-86fd-2c2bb0ecfbed"
+      ]'>
+        <img src="https://github.com/user-attachments/assets/f256392c-a319-44bd-88af-edaae83064e3" alt="นิเทศศิลป์" loading="lazy"/>
+        <div class="dept-card-body">
+          <span class="dept-num">03</span>
+          <div class="dept-name">นิเทศศิลป์</div>
+          <div class="dept-meta">
+            <span class="dept-count">15 หน้า · คู่มือแนะแนว</span>
+            <div class="dept-arrow">+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-card" data-dept="film" data-count="9" data-images='[
+        "https://github.com/user-attachments/assets/90a0226e-c518-4a52-a568-e1ef6d55f19b",
+        "https://github.com/user-attachments/assets/3589a1b0-f8ca-4b43-9a1d-afd515103681",
+        "https://github.com/user-attachments/assets/875c5d46-7173-4428-9f54-56fd70680f6f",
+        "https://github.com/user-attachments/assets/e4b385c9-c2b0-4736-b19d-aec25e721f44",
+        "https://github.com/user-attachments/assets/596d4511-8782-4b74-9e38-170632398fc2",
+        "https://github.com/user-attachments/assets/cc98eb0f-2309-4fd4-8598-a522bef9dbdb",
+        "https://github.com/user-attachments/assets/4a9c46ee-5e93-47c7-9f6f-68ead08f993b",
+        "https://github.com/user-attachments/assets/c6e851cf-4ebc-46ca-ac47-b5ede8edf837",
+        "https://github.com/user-attachments/assets/1225d1eb-06fb-484f-bd75-814f4e167175"
+      ]'>
+       <img src="https://github.com/user-attachments/assets/90a0226e-c518-4a52-a568-e1ef6d55f19b" alt="ภาพยนตร์" loading="lazy"/>
+        <div class="dept-card-body">
+          <span class="dept-num">04</span>
+          <div class="dept-name">ภาพยนตร์</div>
+          <div class="dept-meta">
+            <span class="dept-count">9 หน้า · คู่มือแนะแนว</span>
+            <div class="dept-arrow">+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-card" data-dept="anime" data-count="10"  data-images='[
+        "https://github.com/user-attachments/assets/1c3ed5f5-9d85-4896-99b2-33b9a5e5e199",
+        "https://github.com/user-attachments/assets/1836392c-66a3-48ae-8df8-bf77d04ab811",
+        "https://github.com/user-attachments/assets/3c536cc6-949f-4b03-bb9d-c8be1716842d",
+        "https://github.com/user-attachments/assets/9594f1f6-2b1c-4892-8e53-fe03366a8e03",
+        "https://github.com/user-attachments/assets/85db3917-55a2-4ec2-b636-ec23799e6520",
+        "https://github.com/user-attachments/assets/b28ba90d-14ee-4040-b2a5-a47306b405d1",
+        "https://github.com/user-attachments/assets/03e4b885-fb84-4fdf-bac9-c5ac88a253be",
+        "https://github.com/user-attachments/assets/252ca459-6ead-4b32-9565-670cb61c1c42",
+        "https://github.com/user-attachments/assets/722289fd-c87a-424b-918f-bbae61827f57",
+        "https://github.com/user-attachments/assets/a3b5ef90-7bea-44f0-9bb2-ca4f8640b1f3"
+      ]'>
+        <img src="https://github.com/user-attachments/assets/1c3ed5f5-9d85-4896-99b2-33b9a5e5e199" alt="อนิเมชัน" loading="lazy"/>
+        <div class="dept-card-body">
+          <span class="dept-num">05</span>
+          <div class="dept-name">อนิเมชัน</div>
+          <div class="dept-meta">
+            <span class="dept-count">10 หน้า · คู่มือแนะแนว</span>
+            <div class="dept-arrow">+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-card" data-dept="product" data-count="11" data-images='[
+        "https://github.com/user-attachments/assets/94072ac3-83b9-4598-b78d-43ac24f6445e",
+        "https://github.com/user-attachments/assets/81058936-ba7d-4d75-b4d6-763b74be68be",
+        "https://github.com/user-attachments/assets/20ef66a0-0e49-41e6-9163-ec51abf86e83",
+        "https://github.com/user-attachments/assets/d4d71ea5-f533-47fa-9472-c677c7f8e236",
+        "https://github.com/user-attachments/assets/01194ab9-f211-41ef-b0d9-62f2b37ac403",
+        "https://github.com/user-attachments/assets/2d63ff51-1595-4635-98a4-6f7f27f5b17f",
+        "https://github.com/user-attachments/assets/d4563e1d-189f-4822-8b0b-1ef0af944079",
+        "https://github.com/user-attachments/assets/668bffe7-3bcf-47cd-b251-f2d841b4767d",
+        "https://github.com/user-attachments/assets/a6bab8d4-a04a-4577-9a1e-8e3e4c74ddda",
+        "https://github.com/user-attachments/assets/5c88a678-a3d6-4f18-b61a-d3d5f2ecafab",
+        "https://github.com/user-attachments/assets/bc61c578-2225-4574-aafb-3a9cf7d09e3e"
+	]'>
+        <img src="https://github.com/user-attachments/assets/94072ac3-83b9-4598-b78d-43ac24f6445e" alt="ออกแบบผลิตภัณฑ์" loading="lazy"/>
+        <div class="dept-card-body">
+          <span class="dept-num">06</span>
+          <div class="dept-name">ออกแบบผลิตภัณฑ์</div>
+          <div class="dept-meta">
+            <span class="dept-count">11 หน้า · คู่มือแนะแนว</span>
+            <div class="dept-arrow">+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dept-card" data-dept="paint" data-count="11"  data-images='[
+        "https://github.com/user-attachments/assets/4327a2ef-9a89-40b8-a282-7c6754474b1c",
+        "https://github.com/user-attachments/assets/20a9a24b-0557-44fd-8820-2d03c9502807",
+        "https://github.com/user-attachments/assets/30922956-5b31-491e-9107-b4f4c18a2d63",
+        "https://github.com/user-attachments/assets/e337a24b-bd46-4f01-8bf6-5dba7e14e7e1",
+        "https://github.com/user-attachments/assets/150163ba-4612-434b-8c28-9a17514ee7e1",
+        "https://github.com/user-attachments/assets/dc723047-d9d1-4d70-9239-0fabf52eb40f",
+        "https://github.com/user-attachments/assets/9755f938-8c95-4970-929f-71ca53f3085c",
+        "https://github.com/user-attachments/assets/47b661f4-6dbf-4f35-a7f3-b44480c2d6f7",
+        "https://github.com/user-attachments/assets/6d9e46fd-28e3-458a-9eb1-97e2078308cc",
+        "https://github.com/user-attachments/assets/cc1bfe63-5aa2-4007-ab63-59146dd03f58",
+        "https://github.com/user-attachments/assets/374e12c3-4526-4382-ae3c-823552861876"
+	]'>
+        <img src="https://github.com/user-attachments/assets/4327a2ef-9a89-40b8-a282-7c6754474b1c" alt="จิตรกรรม วิจิตรศิลป์" loading="lazy"/>
+        <div class="dept-card-body">
+          <span class="dept-num">07</span>
+          <div class="dept-name">จิตรกรรม วิจิตรศิลป์</div>
+          <div class="dept-meta">
+            <span class="dept-count">11 หน้า · คู่มือแนะแนว</span>
+            <div class="dept-arrow">+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENT LIGHTBOX -->
+<div class="dept-lightbox" id="deptLightbox">
+  <div class="dlb-top">
+    <div class="dlb-title" id="dlbTitle">—<span id="dlbSub"></span></div>
+    <button class="dlb-close" id="dlbClose" aria-label="ปิด">✕</button>
+  </div>
+  <div class="dlb-stage">
+    <button class="dlb-nav dlb-prev" id="dlbPrev" aria-label="ก่อนหน้า">‹</button>
+    <div class="dlb-img-wrap"><img id="dlbImg" src="" alt=""/></div>
+    <button class="dlb-nav dlb-next" id="dlbNext" aria-label="ถัดไป">›</button>
+  </div>
+  <div class="dlb-bottom">
+    <span class="dlb-counter" id="dlbCounter">1 / 1</span>
+  </div>
+</div>
 
 <!-- COURSES -->
 <section class="courses-section" id="courses">
@@ -1157,8 +1475,9 @@ footer p{font-size:.75rem;color:var(--dust);letter-spacing:.5px;font-family:'Not
   <p>© 2026 บริษัท อาร์ทโนเลท จำกัด · Course Catalog TCAS 70</p>
 </footer>
 
+<!-- ─── [เขียน JAVASCRIPT ทั้งหมดตรงนี้] ─── -->
 <script>
-// Accordion
+// 1. ระบบ Accordion ของคอร์สเรียน (โค้ดเดิม)
 document.querySelectorAll('[data-row]').forEach(row => {
   row.querySelector('.course-row-header').addEventListener('click', () => {
     const isOpen = row.classList.contains('open');
@@ -1170,7 +1489,7 @@ document.querySelectorAll('[data-row]').forEach(row => {
   });
 });
 
-// Hamburger / drawer
+// 2. ระบบ Hamburger Menu ของมือถือ (โค้ดเดิม)
 const hamburger = document.getElementById('hamburger');
 const drawer = document.getElementById('drawer');
 hamburger.addEventListener('click', () => {
@@ -1178,7 +1497,6 @@ hamburger.addEventListener('click', () => {
   drawer.classList.toggle('open', open);
   hamburger.setAttribute('aria-expanded', open);
 });
-// Close drawer when any drawer link clicked
 document.querySelectorAll('.drawer-link').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('active');
@@ -1186,12 +1504,78 @@ document.querySelectorAll('.drawer-link').forEach(link => {
     hamburger.setAttribute('aria-expanded', false);
   });
 });
-// Close drawer on outside tap
 document.addEventListener('click', e => {
   if (!drawer.contains(e.target) && !hamburger.contains(e.target)) {
     hamburger.classList.remove('active');
     drawer.classList.remove('open');
     hamburger.setAttribute('aria-expanded', false);
+  }
+});
+
+// 3. [ระบบใหม่] ควบคุมการเปิด/สไลด์คู่มือรูปภาพด้วย Lightbox จาก GitHub
+const lightbox = document.getElementById('deptLightbox');
+const dlbImg = document.getElementById('dlbImg');
+const dlbTitle = document.getElementById('dlbTitle');
+const dlbSub = document.getElementById('dlbSub');
+const dlbCounter = document.getElementById('dlbCounter');
+const dlbClose = document.getElementById('dlbClose');
+const dlbPrev = document.getElementById('dlbPrev');
+const dlbNext = document.getElementById('dlbNext');
+
+let currentImages = [];
+let currentIndex = 0;
+let currentDeptName = "";
+
+// ตรวจจับการคลิกที่กล่องภาควิชา
+document.querySelectorAll('.dept-card:not(.dept-soon)').forEach(card => {
+  card.addEventListener('click', () => {
+    const rawImages = card.getAttribute('data-images');
+    if (!rawImages) return; // ถ้ารายการไหนยังไม่มีชุดรูปภาพให้ข้ามไปก่อน
+
+    let parsedImages = [];
+    try {
+      parsedImages = JSON.parse(rawImages);
+    } catch (err) {
+      console.error('ไม่สามารถอ่านชุดรูปภาพของภาควิชานี้ได้:', err);
+      return;
+    }
+
+    currentImages = parsedImages;
+    currentDeptName = card.querySelector('.dept-name').innerText;
+    currentIndex = 0;
+
+    updateLightbox();
+    lightbox.classList.add('open');
+  });
+});
+
+// ฟังก์ชันสำหรับเปลี่ยนรูปภาพและแสดงเลขหน้าในระบบป๊อปอัป
+function updateLightbox() {
+  if (currentImages.length === 0) return;
+  dlbImg.src = currentImages[currentIndex];
+  dlbTitle.firstChild.textContent = currentDeptName;
+  dlbSub.innerText = `หน้า ${currentIndex + 1}`;
+  dlbCounter.innerText = `${currentIndex + 1} / ${currentImages.length}`;
+}
+
+// ปุ่มควบคุมเลื่อน ถัดไป / ก่อนหน้า
+dlbNext.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  updateLightbox();
+});
+
+dlbPrev.addEventListener('click', (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  updateLightbox();
+});
+
+// กดปิดป๊อปอัป Lightbox
+dlbClose.addEventListener('click', () => lightbox.classList.remove('open'));
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox || e.target.classList.contains('dlb-stage') || e.target.classList.contains('dlb-img-wrap')) {
+    lightbox.classList.remove('open');
   }
 });
 </script>
