@@ -425,7 +425,7 @@ body::before{
 .scholar-pct{font-family:'Noto Sans Thai',serif;font-size:5rem;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0}
 .scholar-banner h3{font-family:'Noto Sans Thai',serif;font-size:1.4rem;margin-bottom:.3rem}
 .scholar-banner p{font-size:.85rem;color:var(--mist);font-family:'Noto Sans Thai',sans-serif}
-.scholar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.5rem}
+.scholar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-bottom:1.5rem}
 .scholar-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:2rem 1.6rem;position:relative;overflow:hidden}
 .scholar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .sc-gold::before{background:var(--gold)}
@@ -441,6 +441,7 @@ body::before{
 .sc-list li{font-size:.85rem;color:var(--mist);padding:.3rem 0;display:flex;gap:.5rem;line-height:1.6;font-family:'Noto Sans Thai',sans-serif;border-bottom:1px solid rgba(255,255,255,.04)}
 .sc-list li:last-child{border-bottom:none}
 .sc-list li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
+.sc-num{font-family:'Noto Sans Thai',serif;font-size:1.6rem;color:rgba(184,150,62,.25);margin-bottom:.2rem}
 .sc-note{padding:1.2rem 1.6rem;background:rgba(184,150,62,.06);border:1px solid rgba(184,150,62,.15);font-size:.85rem;color:var(--dust);line-height:1.7;font-family:'Noto Sans Thai',sans-serif}
 .sc-note b{color:var(--gold2)}
 
@@ -492,7 +493,7 @@ footer p{font-size:.75rem;color:var(--dust);letter-spacing:.5px;font-family:'Not
   .nav-menu a{font-size:.65rem;letter-spacing:1.5px}
   .hero,.why-section,.courses-section,.table-section,.scholar-section,.contact-section{padding-left:2rem;padding-right:2rem}
   .why-grid{grid-template-columns:repeat(2,1fr)}
-  .scholar-grid{grid-template-columns:repeat(3,1fr)}
+  .scholar-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
   .contact-inner{grid-template-columns:1fr 1fr;gap:2.5rem}
   footer{padding:1.5rem 2rem}
   .course-block-header{padding:1.3rem 1.6rem}
@@ -599,7 +600,7 @@ footer p{font-size:.75rem;color:var(--dust);letter-spacing:.5px;font-family:'Not
   <ul class="nav-menu">
     <li><a href="#courses">คอร์ส</a></li>
     <li><a href="#overview">ตาราง</a></li>
-    <li><a href="#scholarship">ทุนการศึกษา</a></li>
+    <li><a href="#scholarship">PORTFOLIO TCAS70</a></li>
     <li><a href="#contact">ติดต่อ</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="เมนู" aria-expanded="false">
@@ -613,7 +614,7 @@ footer p{font-size:.75rem;color:var(--dust);letter-spacing:.5px;font-family:'Not
   <ul>
     <li><a href="#courses" class="drawer-link">คอร์สทั้งหมด</a></li>
     <li><a href="#overview" class="drawer-link">ตารางสรุป</a></li>
-    <li><a href="#scholarship" class="drawer-link">ทุนการศึกษา</a></li>
+    <li><a href="#scholarship" class="drawer-link">PORTFOLIO TCAS70</a></li>
     <li><a href="#contact" class="drawer-link">ติดต่อเรา</a></li>
   </ul>
   <a href="#contact" class="drawer-cta drawer-link">สมัครเรียน</a>
@@ -636,7 +637,7 @@ footer p{font-size:.75rem;color:var(--dust);letter-spacing:.5px;font-family:'Not
     </div>
     <div class="hero-btns">
       <a href="#courses" class="btn btn-gold">ดูคอร์สทั้งหมด</a>
-      <a href="#scholarship" class="btn btn-ghost">ทุนการศึกษา 50%</a>
+      <a href="#scholarship" class="btn btn-ghost">PORTFOLIO TCAS70</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -1380,56 +1381,46 @@ footer p{font-size:.75rem;color:var(--dust);letter-spacing:.5px;font-family:'Not
 <!-- SCHOLARSHIP -->
 <section class="scholar-section" id="scholarship">
   <div class="scholar-inner">
-    <div class="section-eyebrow">05 — Talent Scholarship (สมัครได้ถึง 15 สิงหาคม 2569 เท่านั้น)</div>
-    <h2 class="section-title">ทุนการศึกษา 2026</h2>
+    <div class="section-eyebrow">05 — Portfolio Program (ราคาพิเศษถึง 30 กันยายน 2569 เท่านั้น)</div>
+    <h2 class="section-title">PORTFOLIO TCAS70</h2>
     <div class="section-rule"></div>
     <div class="scholar-banner">
-      <div class="scholar-pct">50%</div>
+      <div class="scholar-pct">OCT</div>
       <div>
-        <h3>Talent Scholarship 2026</h3>
-        <p>ส่วนลดทุนการศึกษา คอร์สติวสดที่ตึกแบบเหมาเดือน 1 เดือน สำหรับผู้ที่มีคุณสมบัติตามเกณฑ์ — สามารถเลือกใช้ได้เพียง 1 เงื่อนไขเท่านั้น</p>
+        <h3>ทำพอร์ต เดือนตุลาคม 2569</h3>
+        <p>คอร์สทำพอร์ตแบบเหมาเดือน เตรียมความพร้อมสู่ TCAS70 เลือกได้ทั้งแบบกบดานพักที่ตึก และแบบไป-กลับ</p>
       </div>
     </div>
     <div class="scholar-grid">
       <div class="scholar-card sc-gold">
-        <div class="sc-num">01 🎓</div>
-        <div class="sc-pct">50%</div>
-        <div class="sc-after">4,200 ฿</div>
-        <div class="sc-from">ปกติ 8,400 ฿</div>
-        <div class="sc-title">เด็กซิ่ว / GED / Gap Year</div>
+        <div class="sc-num">01 🏠</div>
+        <div class="sc-pct">8,600 ฿</div>
+        <div class="sc-from">ปกติ 8,900 บาท</div>
+        <div class="sc-title">ทำพอร์ตเหมาเดือน — กบดานที่ตึก</div>
         <ul class="sc-list">
-          <li>มีคะแนนสอบ TPAT / TGAT</li>
-          <li>เคยสอบติดสัมภาษณ์ TCAS69</li>
-          <li>ต้องเข้าเรียนอย่างสม่ำเสมอ ≥ 80%</li>
+          <li>ชำระเต็มจำนวน</li>
+          <li>พักที่ตึกตลอดเดือนตุลาคม</li>
+          <li>เหมาะสำหรับน้องต่างจังหวัด / เร่งพอร์ต</li>
         </ul>
       </div>
       <div class="scholar-card sc-silver">
-        <div class="sc-num">02 🏆</div>
-        <div class="sc-pct">30%</div>
-        <div class="sc-after">5,880 ฿</div>
-        <div class="sc-from">ปกติ 8,400 ฿</div>
-        <div class="sc-title">เด็ก ม.6 ที่มีผลงาน</div>
+        <div class="sc-num">02 🚗</div>
+        <div class="sc-pct">8,200 ฿</div>
+        <div class="sc-from">ปกติ 8,400 บาท</div>
+        <div class="sc-title">ทำพอร์ตเหมาเดือน — ไป-กลับ</div>
         <ul class="sc-list">
-          <li>มีผลงานลงพอร์ตหรือผลงาน Advanced</li>
-          <li>คะแนน Dek-Skill ผ่านเกณฑ์ 60+ คะแนน</li>
-          <li>รางวัลประกวดระดับจังหวัด/ชาติ</li>
-        </ul>
-      </div>
-      <div class="scholar-card sc-bronze">
-        <div class="sc-num">03 📚</div>
-        <div class="sc-pct">10%</div>
-        <div class="sc-after">7,560 ฿</div>
-        <div class="sc-from">ปกติ 8,400 ฿</div>
-        <div class="sc-title">ม.ปลาย ผลการเรียนดี</div>
-        <ul class="sc-list">
-          <li>GPA 3.50 ขึ้นไป</li>
-          <li>สำหรับนักเรียน ม.ปลาย ทุกระดับชั้น</li>
+          <li>ชำระเต็มจำนวน</li>
+          <li>เดินทางไป-กลับเอง ไม่พักที่ตึก</li>
+          <li>เหมาะสำหรับน้องบ้านใกล้ตึก</li>
         </ul>
       </div>
     </div>
     <div class="sc-note">
-      <b>⚠️ หมายเหตุสำคัญ:</b> สามารถเลือกใช้ได้เพียง <b>1 เงื่อนไข</b>เท่านั้น ·
-      ส่วนลดนี้เป็นรูปแบบ <b>ทุนการศึกษา (Scholarship)</b> ไม่ใช่การลดราคาทั่วไป ·
+      <b>⏳ ราคาพิเศษนี้สมัครได้ถึงวันที่ 30 กันยายน 2569 เท่านั้น</b> — สมัครคอร์สเดือนตุลาคมหลังจากนี้จะเป็นราคาปกติ
+    </div>
+    <div class="sc-note" style="margin-top:1rem">
+      <b>🎁 สิทธิพิเศษ:</b> สำหรับผู้ที่ลงทะเบียนคอร์สทำพอร์ตแล้ว หากสมัครคอร์ส <b>10 ครั้ง</b> ภายในเดือนกันยายน
+      รับสิทธิ์อัพเกรดเป็นคอร์ส <b>15 ครั้ง ฟรี!</b> (สมัครได้ถึงวันที่ <b>15 กันยายน 2569</b> เท่านั้น)
     </div>
   </div>
 </section>
