@@ -445,6 +445,24 @@ body::before{
 .sc-note{padding:1.2rem 1.6rem;background:rgba(184,150,62,.06);border:1px solid rgba(184,150,62,.15);font-size:.85rem;color:var(--dust);line-height:1.7;font-family:'Noto Sans Thai',sans-serif}
 .sc-note b{color:var(--gold2)}
 
+/* ─── PROMO: สวัสดีน้องใหม่ ─── */
+.promo-section{background:var(--charcoal)}
+.promo-section .scholar-banner{
+  background:linear-gradient(135deg,rgba(184,150,62,.2),rgba(184,150,62,.05));
+}
+.promo-section .scholar-pct{font-size:6rem}
+.promo-badge{
+  position:absolute;top:1rem;right:1rem;
+  font-size:.58rem;letter-spacing:2px;text-transform:uppercase;font-weight:700;
+  padding:4px 10px;background:var(--gold);color:var(--ink);border-radius:2px;
+  font-family:'Noto Sans Thai',sans-serif;
+}
+.promo-cta{margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap}
+@media(max-width:767px){
+  .promo-section .scholar-pct{font-size:4.5rem}
+  .promo-cta .btn{width:100%;text-align:center}
+}
+
 /* ─── CONTACT ─── */
 .contact-section{padding:6rem 3.5rem 4rem;background:var(--charcoal);position:relative;z-index:1}
 .contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
@@ -878,6 +896,7 @@ footer p{font-size:.75rem;color:var(--dust);letter-spacing:.5px;font-family:'Not
     </div>
     <div class="scholar-grid">
       <div class="scholar-card sc-gold">
+		<span class="promo-badge">แนะนำ</span>
         <div class="sc-num">01 📕</div>
         <div class="sc-pct">9,900 ฿</div>
         <div class="sc-from">ปกติ 26,700 บาท</div>
@@ -934,6 +953,71 @@ footer p{font-size:.75rem;color:var(--dust);letter-spacing:.5px;font-family:'Not
       <b>⏳ ราคาพิเศษนี้สมัครได้ถึงวันที่ 31 ธันวาคม 2569 เท่านั้น</b>
     </div>
    </div>
+</section>
+
+<!-- PROMO: สวัสดีน้องใหม่ -->
+<section class="scholar-section promo-section" id="promo">
+  <div class="scholar-inner">
+    <div class="section-eyebrow">Promotion</div>
+    <h2 class="section-title">สวัสดีน้องใหม่</h2>
+    <div class="section-rule"></div>
+
+    <div class="scholar-banner">
+      <div class="scholar-pct">x2</div>
+      <div>
+        <h3>โปรเตรียมพื้นฐาน สำหรับน้อง ม.4–5</h3>
+        <p>เริ่มจากคอร์ส Onsite 8 แถม 2 แล้วอัพเป็นโปร x2 จ่ายเพิ่มแค่ 210 บาท ได้เรียนเพิ่มอีก 10 ครั้ง หรือสมัครเป็นคู่ แชร์คอร์สกันคนละครึ่ง</p>
+      </div>
+    </div>
+
+    <div class="scholar-grid">
+
+      <div class="scholar-card sc-silver">
+        <div class="sc-num">01 🎒</div>
+        <div class="sc-pct">3,990 ฿</div>
+        <div class="sc-title">Onsite 8 ครั้ง แถมฟรี 2 ครั้ง</div>
+        <ul class="sc-list">
+          <li>รวม 10 ครั้ง (จ่าย 8 + ฟรี 2)</li>
+          <li>อายุคอร์ส 1 เดือน</li>
+          <li>กบดานฟรี · พี่ติวสายตรงทุกวิชา</li>
+        </ul>
+      </div>
+
+      <div class="scholar-card sc-gold">
+        <span class="promo-badge">แนะนำ</span>
+        <div class="sc-num">02 ✨</div>
+        <div class="sc-pct">อัพเป็นโปร x2</div>
+        <div class="sc-after">จ่ายเพิ่ม +210 ฿</div>
+        <div class="sc-title">รวม 4,200 บาท</div>
+        <ul class="sc-list">
+          <li>จ่ายเพิ่ม 210 บาท รับเพิ่มอีก 10 ครั้ง</li>
+          <li>รวมเป็น 20 ครั้ง</li>
+          <li>ใช้คอร์สได้ 2 เดือน</li>
+        </ul>
+      </div>
+
+      <div class="scholar-card sc-bronze">
+        <div class="sc-num">03 🤝</div>
+        <div class="sc-pct">2,100 ฿</div>
+        <div class="sc-from">ปกติ 3,990 บาท / คน</div>
+        <div class="sc-title">สมัครคู่ แชร์คนละครึ่ง</div>
+        <ul class="sc-list">
+          <li>แบ่งคอร์ส x2 เรียนคนละ 10 ครั้ง</li>
+          <li>อายุคอร์ส 1 เดือน</li>
+          <li>จ่ายคนละครึ่ง เหลือคนละ 2,100 บาท</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="sc-note">
+      <b>🎓 โปรโมชันนี้สำหรับน้อง ม.4–5</b> · สอบถามเงื่อนไขและสำรองที่นั่งได้ที่ Line <b>@artnolate</b> หรือโทร <b>083-177-9250</b>
+      <div class="promo-cta">
+        <a href="https://line.me/R/ti/p/@artnolate" class="btn btn-gold" target="_blank" rel="noopener">สมัครโปรนี้ทาง Line</a>
+        <a href="#courses" class="btn btn-ghost">ดูคอร์สทั้งหมด</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- COURSES -->
